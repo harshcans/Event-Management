@@ -1,0 +1,201 @@
+{
+  "info": {
+    "_postman_id": "event-management-api-2026",
+    "name": "Event Management API",
+    "description": "Postman collection for the Society Event Management REST API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:5000/api/events"
+    },
+    {
+      "key": "eventId",
+      "value": "REPLACE_WITH_EVENT_ID"
+    }
+  ],
+  "item": [
+    {
+      "name": "Create Event",
+      "request": {
+        "method": "POST",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Society Hackathon\",\n  \"description\": \"A coding event for society members\",\n  \"startDate\": \"2026-10-10T10:00:00\",\n  \"endDate\": \"2026-10-10T16:00:00\",\n  \"venue\": \"Community Hall\",\n  \"capacity\": 50\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}",
+          "host": [
+            "{{baseUrl}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get All Events",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}",
+          "host": [
+            "{{baseUrl}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Search Events",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}?search=hackathon",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "search",
+              "value": "hackathon"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Filter by Venue",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}?venue=auditorium",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "venue",
+              "value": "auditorium"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Filter by Status",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}?status=upcoming",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "status",
+              "value": "upcoming"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Pagination",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}?page=1&limit=10",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "page",
+              "value": "1"
+            },
+            {
+              "key": "limit",
+              "value": "10"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Sorting",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}?sort=startDate&order=asc",
+          "host": [
+            "{{baseUrl}}"
+          ],
+          "query": [
+            {
+              "key": "sort",
+              "value": "startDate"
+            },
+            {
+              "key": "order",
+              "value": "asc"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "Get Event by ID",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "{{baseUrl}}/{{eventId}}",
+          "host": [
+            "{{baseUrl}}",
+            "{{eventId}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Update Event",
+      "request": {
+        "method": "PUT",
+        "header": [
+          {
+            "key": "Content-Type",
+            "value": "application/json"
+          }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"venue\": \"Main Auditorium\",\n  \"capacity\": 80\n}"
+        },
+        "url": {
+          "raw": "{{baseUrl}}/{{eventId}}",
+          "host": [
+            "{{baseUrl}}",
+            "{{eventId}}"
+          ]
+        }
+      }
+    },
+    {
+      "name": "Delete Event",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "{{baseUrl}}/{{eventId}}",
+          "host": [
+            "{{baseUrl}}",
+            "{{eventId}}"
+          ]
+        }
+      }
+    }
+  ]
+}
