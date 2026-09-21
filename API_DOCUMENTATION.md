@@ -2,7 +2,7 @@
 
 ## Base URL
 
-`http://localhost:5000/api/events`
+`https://event-management-xxmk.onrender.com`
 
 ## Event Object
 
